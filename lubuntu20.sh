@@ -28,7 +28,13 @@ apt install virtualbox-guest-dkms virtualbox-guest-x11
 # # 自动挂载共享文件夹 #如果没有设置共享文件夹，好像会导致无法开机
 cp /etc/fstab /etc/fstab.bak
 
-TARGET=/home/mike/Desktop/ShareWindows/
+USER="mike"
+if [ -n "$1" ]; then
+    USER=$1
+fi
+
+TARGET=/home/$USER/Desktop/ShareWindows/
+
 mkdir $TARGET
 echo "" >>/etc/fstab
 echo "# 自动挂载共享文件夹" >>/etc/fstab
